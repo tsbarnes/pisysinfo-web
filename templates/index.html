@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}pisysinfo-web{% endblock %}
+
+{% block header %}
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <p class="navbar-brand">pisysinfo-web</p>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/tsbarnes/pisysinfo-web">pisysinfo-web GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="row text-center">
+        <div class="col-lg-4 col-md-3 col-sm-1"></div>
+        <div class="col-lg-4 col-md-6 col-sm-10">
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-1"></div>
+        <div class="col-lg-4 col-md-6 col-sm-10">
+            <h1>System Info</h1>
+            <table class="table-responsive">
+                <tr>
+                    <td>OS:</td>
+                    <td>{{ system.dist() }}</td>
+                </tr>
+                <tr>
+                    <td>Model:</td>
+                    <td>{{ system.model() }}</td>
+                </tr>
+                <tr>
+                    <td>Temperature:</td>
+                    <td>{{ system.temperature() }}°</td>
+                </tr>
+                <tr>
+                    <td>Network Sent:</td>
+                    <td>{{ system.network_total_sent() }}</td>
+                </tr>
+                <tr>
+                    <td>Network Received:</td>
+                    <td>{{ system.network_total_received() }}</td>
+                </tr>
+                <tr>
+                    <td>Hostname:</td>
+                    <td>{{ system.node() }}</td>
+                </tr>
+                <tr>
+                    <td>Local IPv4 Address:</td>
+                    <td>{{ system.local_ipv4_address() }}</td>
+                </tr>
+                <tr>
+                    <td>Uptime:</td>
+                    <td><abbr title="{{ system.uptime() }}">{{ system.human_uptime() }}</abbr></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-1"></div>
+    </div>
+{% endblock %}
